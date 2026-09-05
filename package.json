@@ -1,0 +1,38 @@
+{
+  "name": "slurplash",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "tsx server/index.ts",
+    "build": "next build",
+    "start": "NODE_ENV=production tsx server/index.ts",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "tour": "node scripts/tour.mjs",
+    "test": "node --import tsx --test server/__tests__/*.test.ts"
+  },
+  "dependencies": {
+    "canvas-confetti": "^1.9.4",
+    "lucide-react": "^1.41.0",
+    "motion": "^13.2.0",
+    "next": "16.3.4",
+    "qrcode.react": "^4.2.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "tsx": "^4.23.13",
+    "ws": "^8.21.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/canvas-confetti": "^1.9.0",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/ws": "^8.18.1",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.4",
+    "playwright": "^1.63.0",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
