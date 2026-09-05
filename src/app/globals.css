@@ -1,0 +1,246 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────────────────────
+   Slurplash design tokens — 7-Eleven brand system
+   ───────────────────────────────────────────────────────────── */
+@theme {
+  /* brand */
+  --color-seven-green: #008060;
+  --color-seven-green-bright: #00A57A;
+  --color-seven-green-deep: #005C45;
+  --color-seven-green-dark: #023B2D;
+  --color-seven-green-ink: #01271E;
+  --color-seven-orange: #f58220;
+  --color-seven-orange-bright: #FFA043;
+  --color-seven-orange-deep: #d9680b;
+  --color-seven-red: #ee1c25;
+  --color-seven-red-deep: #B8121A;
+  --color-slurpee-blue: #00a3e0;
+  --color-slurpee-blue-deep: #0078B5;
+  --color-slurpee-cherry: #e31b23;
+  --color-slurpee-cherry-deep: #B5121A;
+  --color-cream: #fff8ec;
+  --color-cream-deep: #F8EBD2;
+  --color-ink: #10221b;
+  --color-ink-soft: #3A4B44;
+  --color-mist: #EAF3EF;
+
+  /* type */
+  --font-sans: var(--font-gsf), "SF Pro Display", -apple-system, BlinkMacSystemFont, "Google Sans", Roboto, system-ui, sans-serif;
+
+  /* radii */
+  --radius-chip: 0.75rem;
+  --radius-card: 1.75rem;
+  --radius-hero: 2.5rem;
+
+  /* motion */
+  --ease-spring: cubic-bezier(0.22, 1.4, 0.36, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* shadows */
+  --shadow-chunky: 0 8px 0 0 rgba(0, 0, 0, 0.18);
+  --shadow-card: 0 20px 50px -20px rgba(1, 39, 30, 0.45), 0 2px 0 0 rgba(255, 255, 255, 0.6) inset;
+  --shadow-glow-orange: 0 0 60px -10px rgba(245, 130, 32, 0.7);
+  --shadow-glow-blue: 0 0 60px -10px rgba(0, 163, 224, 0.7);
+}
+
+:root {
+  color-scheme: light;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  height: 100%;
+  background: var(--color-seven-green-dark);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
+  overscroll-behavior: none;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ─────── typography utilities ─────── */
+
+/* Chunky rounded display face via Google Sans Flex's ROND/wdth axes */
+@utility display {
+  font-variation-settings: "ROND" 100, "wdth" 112, "opsz" 144, "GRAD" 0;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+}
+@utility display-soft {
+  font-variation-settings: "ROND" 100, "wdth" 104, "opsz" 48;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+@utility numeric {
+  font-variant-numeric: tabular-nums;
+  font-variation-settings: "ROND" 60, "wdth" 100, "opsz" 144;
+}
+@utility eyebrow {
+  font-variation-settings: "ROND" 40, "wdth" 118, "opsz" 12;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+}
+/* The 1920×1080 host stage reads from across a room — scale the small stuff up */
+.stage .eyebrow {
+  font-size: 1rem;
+}
+
+/* ─────── brand stripes (orange / red / green) ─────── */
+.stripes {
+  background: linear-gradient(
+    to bottom,
+    var(--color-seven-orange) 0 33.4%,
+    var(--color-seven-red) 33.4% 66.7%,
+    var(--color-seven-green) 66.7% 100%
+  );
+}
+.stripes-h {
+  background: linear-gradient(
+    to right,
+    var(--color-seven-orange) 0 33.4%,
+    var(--color-seven-red) 33.4% 66.7%,
+    var(--color-seven-green) 66.7% 100%
+  );
+}
+
+/* ─────── surfaces ─────── */
+.host-bg {
+  background:
+    radial-gradient(1200px 700px at 20% -10%, rgba(0, 165, 122, 0.55), transparent 60%),
+    radial-gradient(900px 600px at 100% 110%, rgba(0, 163, 224, 0.28), transparent 60%),
+    radial-gradient(700px 500px at 80% 0%, rgba(245, 130, 32, 0.18), transparent 60%),
+    linear-gradient(180deg, #02493A 0%, #023B2D 55%, #01271E 100%);
+}
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.dot-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1.2px, transparent 1.2px);
+  background-size: 28px 28px;
+}
+.play-bg {
+  background:
+    radial-gradient(90% 40% at 50% -5%, rgba(0, 165, 122, 0.7), transparent 70%),
+    radial-gradient(70% 30% at 100% 100%, rgba(0, 163, 224, 0.35), transparent 70%),
+    linear-gradient(180deg, #03533F 0%, #023B2D 60%, #01271E 100%);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+}
+
+.card-white {
+  background: linear-gradient(180deg, #ffffff 0%, #fbf8f1 100%);
+  box-shadow: var(--shadow-card);
+}
+
+/* ─────── slurpee liquid gradients ─────── */
+.liquid-blue {
+  background: linear-gradient(160deg, #62D4FF 0%, #00A3E0 45%, #0078B5 100%);
+}
+.liquid-cherry {
+  background: linear-gradient(160deg, #FF6B6E 0%, #E31B23 45%, #B5121A 100%);
+}
+
+/* ─────── press affordance ─────── */
+.press {
+  transition: transform 140ms var(--ease-spring), box-shadow 140ms var(--ease-spring), filter 140ms;
+  will-change: transform;
+}
+.press:active {
+  transform: translateY(4px) scale(0.985);
+}
+
+/* ─────── shimmer for the room code ─────── */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+.shimmer-text {
+  background: linear-gradient(100deg, #ffffff 30%, #ffe9c9 45%, #ffffff 60%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 3.2s linear infinite;
+}
+
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+.float-y {
+  animation: float-y 3.4s ease-in-out infinite;
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.spin-slow {
+  animation: spin-slow 24s linear infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+.pulse-ring::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 3px solid currentColor;
+  animation: pulse-ring 1.6s var(--ease-out-expo) infinite;
+}
+
+/* hide scrollbars on the controller */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .float-y,
+  .spin-slow,
+  .shimmer-text,
+  .pulse-ring::before {
+    animation: none;
+  }
+}
