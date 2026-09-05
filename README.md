@@ -7,6 +7,16 @@
 
 ---
 
+## Screens
+
+| Showdown tally | The Big Bite |
+| --- | --- |
+| ![Showdown results](docs/screenshots/showdown-results.png) | ![Big Bite voting](docs/screenshots/big-bite.png) |
+
+| Podium | Phone: join | Phone: vote |
+| --- | --- | --- |
+| ![Podium](docs/screenshots/podium.png) | <img src="docs/screenshots/phone-join.png" width="260" /> | <img src="docs/screenshots/phone-vote.png" width="260" /> |
+
 ## What it is
 
 - **Big screen host** (`/host`) — a 16:9 stage for the projector or TV: lobby with QR code + 4-digit room code, round intros on the roller grill, Slurpee-splash answer reveals, live vote counts, tally animations, standings, The Big Bite, and a confetti podium with 7-Eleven trophies.
